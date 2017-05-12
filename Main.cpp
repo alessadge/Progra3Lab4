@@ -140,7 +140,7 @@ void validaciones(int size, string** matrix, int x, int y){
 
       }
    }
-
+}
 
 void boardPic(){
 	move(1,1);
@@ -154,5 +154,5 @@ void cleanScreen(){
 		}
 	}
 }
-}
+
 
