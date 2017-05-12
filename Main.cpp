@@ -31,7 +31,11 @@ int main(){
 
 	//---------- ncurses
 
+<<<<<<< HEAD
    string** pieza_matriz=new string*[8];
+=======
+   char** pieza_matriz=new char*[8];
+>>>>>>> 90bc29de2c4a8af7b4b27dff2ad464de0fd8dff2
    for(int i=0;i<8;i++){
       pieza_matriz[i] = new string[8];
    }
