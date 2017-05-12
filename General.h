@@ -10,7 +10,7 @@ using namespace std;
 class General : public Pieza
 {
 	public:
-		General(int,int);
+		General(int,int,int);
 
 	//	~General();
 	private:

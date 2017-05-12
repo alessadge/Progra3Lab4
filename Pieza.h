@@ -15,7 +15,7 @@ class Pieza
 
 	public:
 		//Pieza();
-		Pieza(int,int);
+		Pieza(int,int,int);
 	//	~Pieza();
 	
 	int getJugador();

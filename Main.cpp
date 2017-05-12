@@ -14,7 +14,7 @@ bool revisarJuego(string**,int, int);
 void printMatriz(int, string**);
 void freeMatriz(int, string**);
 void rellenarMatriz(int, string**);
-void validaciones(int, string**,int, int);
+void validaciones(int, string**,int, int,int);
 
 void boardPic();
 void cleanScreen();
@@ -133,12 +133,14 @@ void rellenarMatriz(int size, string** matrix){
       }
    }
 }
+void verificar(int size, string** matrix, int x, int y){
 
-void validaciones(int size, string** matrix, int x, int y){
+}
+void validaciones(int size, string** matrix, int x, int y, int tipo){
    size=8;
    for(int i = 0; i < size; i++){
       for(int j = 0; j < size; j++){   
-
+	 
 
       }
    }
@@ -156,5 +158,5 @@ void cleanScreen(){
 		}
 	}
 }
-
+      
 

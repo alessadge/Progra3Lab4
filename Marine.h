@@ -9,7 +9,7 @@ using namespace std;
 class Marine : public Pieza
 {
 	public:
-		Marine(int, int);
+		Marine(int, int,int);
 
 //		~Marine();
 	private:
