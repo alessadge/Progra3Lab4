@@ -1,9 +1,18 @@
 #include <iostream>
+#include <string>
+#include <vector>
+#include "Pieza.h"
+#include "General.h"
+#include "Marine.h"
+
+using namespace std;
+
 
 void juego();
 bool revisarJuego(char**,int, int);
 void printMatriz(int, char**);
 void freeMatriz(int, char**);
+void rellenarMatriz(int, char**);
 
 
 int main(){
@@ -11,6 +20,7 @@ int main(){
    for(int i=0;i<8;i++){
       pieza_matriz[i] = new char[8];
    }
+   rellenarMatriz(8, pieza_matriz);
    juego(pieza_matriz);
 
 
@@ -71,4 +81,31 @@ void freeMatriz(int n, char** matrix){
       delete[] matrix[i];
    }
    delete[] matrix;
+}
+
+void rellenarMatriz(int size, char** matrix){
+   for(int i = 0; i < size; i ++){   
+      for(int j = 0; j < size; j++){
+	 if(i==0&&j==1||j==3||j==5||j==7){
+	    matrix[i][j] = 'b';
+	 }//fin matriz primera fila
+	 if(i==1&&j==0||j==2||j==4||j==6){
+	    matrix[i][j] = 'b';
+	  }//fin matriz segunda fila
+	 if(i==2&&j==1||j==3||j==5||j==7){
+	    matrix[i][j] = 'b';
+	 }//fin matriz tercera fila
+      //fin blancos
+	 if(i==5&&j==0||j==2||j==4||j==6){
+	    matrix[i][j] = 'n';
+	 }
+	 if(i==6&&j==1||j==3||j==5||j==7){
+	    matrix[i][j] = 'n';
+	 }
+	 if(i==7&&j==0||j==2||j==4||j==6){
+	    matrix[i][j] = 'n';
+	 }
+      //fin negro
+      }
+   }
 }
