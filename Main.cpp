@@ -27,6 +27,7 @@ int main(){
 return 0;
 }
 
+
 void juego(char** matrix){
    int x,y;
    bool gameOver=false,jugador=true;
@@ -108,4 +109,4 @@ void rellenarMatriz(int size, char** matrix){
       //fin negro
       }
    }
-}
+   }
