@@ -145,6 +145,8 @@ void validaciones(int size, string** matrix, int x, int y){
 void boardPic(){
 	move(1,1);
 }
+
+
 void cleanScreen(){
 	for (int i = 0; i < LINES; i++){
 		for (int j = 0; j < COLS; j++){
