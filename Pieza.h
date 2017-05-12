@@ -9,7 +9,7 @@ using namespace std;
 class Pieza
 {
 	protected:
-		int x,y;
+		int x,y,jugador;
 
 
 
@@ -18,6 +18,9 @@ class Pieza
 		Pieza(int,int);
 	//	~Pieza();
 	
+	int getJugador();
+	void setJugador(int);
+
 	int getX();
 	void setX(int);
 

@@ -16,6 +16,20 @@ void rellenarMatriz(int, char**);
 void validaciones(int, char**,int, int);
 
 int main(){
+
+
+	initscr();
+	start_color();
+
+	attron(  A_BOLD);// de la libreria ncurses... para que todo sea en negrita
+
+
+	echo();
+	boardPic();
+
+
+	//---------- ncurses
+
    char** pieza_matriz=new char*[8];
    for(int i=0;i<8;i++){
       pieza_matriz[i] = new char[8];
@@ -60,11 +74,12 @@ void juego(char** matrix){
    }//fin while
 }//fin metodo juego
 
+/*
 bool revisarJuego(char** pieza_matriz, int x, int y){
 for(i=o;i<pieza_matriz
 
 return false;
-}
+}*/
 
 void printMatriz(int size, char** matrix){
    size = 8;

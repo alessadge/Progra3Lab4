@@ -1,9 +1,21 @@
 #include "Pieza.h"
 
-Pieza::Pieza(int pX,int pY)
+Pieza::Pieza(int pX,int pY, int pjugador)
 {
 	 x=pX;
 	 y=pY;
+	 jugador=pjugador;
+}
+
+	
+int getJugador()
+{
+	return jugador; 
+}
+
+void setJugador(int tjugador)
+{
+	jugador=tjugador;
 }
 
 int  Pieza::getX()
@@ -14,6 +26,9 @@ void Pieza::setX(int tx)
 {
 	x=tx;
 }
+
+
+
 
 int Pieza::getY()
 {
