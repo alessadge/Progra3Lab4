@@ -15,6 +15,9 @@ void freeMatriz(int, char**);
 void rellenarMatriz(int, char**);
 
 
+void boardPic();
+void cleanScreen();
+
 int main(){
 
 
@@ -125,3 +128,15 @@ void rellenarMatriz(int size, char** matrix){
       }
    }
    }
+
+
+void boardPic(){
+	move(1,1);
+}
+void cleanScreen(){
+	for (int i = 0; i < LINES; i++){
+		for (int j = 0; j < COLS; j++){
+			mvprintw(i,j," ");
+		}
+	}
+}
