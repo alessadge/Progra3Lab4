@@ -13,7 +13,7 @@ bool revisarJuego(char**,int, int);
 void printMatriz(int, char**);
 void freeMatriz(int, char**);
 void rellenarMatriz(int, char**);
-
+void validaciones(int, char**,int, int);
 
 int main(){
    char** pieza_matriz=new char*[8];
@@ -22,11 +22,10 @@ int main(){
    }
    rellenarMatriz(8, pieza_matriz);
    juego(pieza_matriz);
-
+   freeMatriz(8,pieza_matriz); 
 
 return 0;
 }
-
 
 void juego(char** matrix){
    int x,y;
@@ -87,26 +86,40 @@ void freeMatriz(int n, char** matrix){
 void rellenarMatriz(int size, char** matrix){
    for(int i = 0; i < size; i ++){   
       for(int j = 0; j < size; j++){
+       	// if(clase.getTipo() == 1){
 	 if(i==0&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = 'b';
+	    matrix[i][j] = "|b|";
 	 }//fin matriz primera fila
 	 if(i==1&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = 'b';
+	    matrix[i][j] = "|b|";
 	  }//fin matriz segunda fila
 	 if(i==2&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = 'b';
+	    matrix[i][j] = "|b|";
 	 }//fin matriz tercera fila
-      //fin blancos
+      //fin blancos if(clase.getTipo()== 2){
 	 if(i==5&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = 'n';
+	    matrix[i][j] = "|n|";
 	 }
 	 if(i==6&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = 'n';
+	    matrix[i][j] = "|n|";
 	 }
 	 if(i==7&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = 'n';
-	 }
+	    matrix[i][j] = "|n|";
+	 }else{
+	    matrix[i][j] = "| |";
+      }
       //fin negro
       }
    }
+}
+
+void validaciones(int size, char** matrix, int x, int y){
+   size=8;
+   for(int i = 0; i < size; i++){
+      for(int j = 0; j < size; j++){   
+
+
+      }
    }
+}
+
