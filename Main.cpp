@@ -16,6 +16,9 @@ void freeMatriz(int, string**);
 void rellenarMatriz(int, string**);
 void validaciones(int, string**,int, int);
 
+void boardPic();
+void cleanScreen();
+
 int main(){
 
 
@@ -31,7 +34,9 @@ int main(){
 
 	//---------- ncurses
 
+
    string** pieza_matriz=new string*[8];
+
    for(int i=0;i<8;i++){
       pieza_matriz[i] = new string[8];
    }
@@ -138,4 +143,18 @@ void validaciones(int size, string** matrix, int x, int y){
       }
    }
 }
+
+void boardPic(){
+	move(1,1);
+}
+
+
+void cleanScreen(){
+	for (int i = 0; i < LINES; i++){
+		for (int j = 0; j < COLS; j++){
+			mvprintw(i,j," ");
+		}
+	}
+}
+
 
