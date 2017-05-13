@@ -14,22 +14,22 @@ bool revisarJuego(string**,int, int);
 void printMatriz(int, string**);
 void freeMatriz(int, string**);
 void rellenarMatriz(int, string**);
-void validaciones(int, string**,int, int,int);
+void validaciones(int, string**,int, int,int,int,int,int,int);
 
 void boardPic();
 void cleanScreen();
 
 int main(){
 
+   
+	//initscr();
+	//start_color();
 
-	initscr();
-	start_color();
-
-	attron(  A_BOLD);// de la libreria ncurses... para que todo sea en negrita
+	//attron(  A_BOLD);// de la libreria ncurses... para que todo sea en negrita
 
 
-	echo();
-	boardPic();
+	//echo();
+	//boardPic();
 
 
 	//---------- ncurses
@@ -48,31 +48,53 @@ return 0;
 }
 
 void juego(string** matrix){
-   int x,y;
+   int x,y,posicionX,posicionY, tipo,cont1=0,cont2=0;
    bool gameOver=false,jugador=true;
    while(!gameOver){
-      while(jugador){
+      while(jugador==true){
 	 printMatriz(8, matrix); 
-	 cout<<"Turno de jugador 1: "<<endl<<
+	 cout<<endl<<"Turno de jugador 1:\n "<<
 	 "Ingrese coordenada en X: "<<endl;
 	 cin>>x;
 	 cout<<"Ingrese coordenada en Y: "<<endl;
 	 cin>>y;
-	 
-	 printMatriz(8, matrix);
+	 cout<<"Posicion X para moverse: "<<endl;
+	 cin>>posicionX;
+	 cout<<"Posicion Y para moverse: "<<endl;
+	 cin>>posicionY;
+	 if(posicionX>7||posicionX<0||posicionY>7||posicionY<0){
+            cout<<"Se salio de las casillas. "<<endl;
+         }else{
+	 validaciones(8,matrix,x,y,posicionX,posicionY,1,cont1,cont2);
+	 if(cont1==12){
+	    cout<<"GAME OVER. Gano Jugador 1";
+	    gameOver=true;
+	 }
 	 jugador=false;
+	 }
       }//turno jugador1
       
       while(!jugador){
+	 cout<<endl;
 	 printMatriz(8, matrix);
-	 cout<<"Turno de jugador 2: "<<endl<<
-	 "Ingrese coordenada en X: "<<endl;
+	 cout<<endl<<"Turno de jugador 2:\n Ingrese coordenada en X: "<<endl;
 	 cin>>x;
 	 cout<<"Ingrese coordenada en Y:"<<endl;
 	 cin>>y;
-
-	 printMatriz(8, matrix);
+	 cout<<"Posicion X para moverse: "<<endl;
+         cin>>posicionX;
+         cout<<"Posicion Y para moverse: "<<endl;
+         cin>>posicionY;
+	 if(posicionX>7||posicionX<0||posicionY>7||posicionY<0){
+	    cout<<"Se salio de las casillas. "<<endl;
+	 }else{
+	 validaciones(8,matrix,x,y,posicionX,posicionY,2,cont1,cont2);
+	 if(cont2==12){
+	    cout<<"GAME OVER. Gano Jugador 2.";
+	    gameOver=true;
+	 }
 	 jugador=true;
+	 }
       }//turno de jugador2
 
 
@@ -88,12 +110,12 @@ return false;
 }*/
 
 void printMatriz(int size, string** matrix){
-   size = 8;
-   for(int i = 0; i < size; i++){
-      for(int j = 0; j < size; j++){
-	 cout<<" "<<matrix[i][j];
+   //size = 8;
+   for(int i = 0; i < 8; i++){
+      for(int j = 0; j < 8; j++){
+	 cout<< matrix[i][j];
       }
-      cout<<endl;
+	cout<<endl;
    }
 }
 
@@ -105,45 +127,70 @@ void freeMatriz(int n, string** matrix){
 }
 
 void rellenarMatriz(int size, string** matrix){
-   for(int i = 0; i < size; i ++){   
-      for(int j = 0; j < size; j++){
-       	// if(clase.getTipo() == 1){
-	 if(i==0&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = "|b|";
-	 }//fin matriz primera fila
-	 if(i==1&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = "|b|";
-	  }//fin matriz segunda fila
-	 if(i==2&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = "|b|";
-	 }//fin matriz tercera fila
-      //fin blancos if(clase.getTipo()== 2){
-	 if(i==5&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = "|n|";
-	 }
-	 if(i==6&&j==1||j==3||j==5||j==7){
-	    matrix[i][j] = "|n|";
-	 }
-	 if(i==7&&j==0||j==2||j==4||j==6){
-	    matrix[i][j] = "|n|";
-	 }else{
-	    matrix[i][j] = "| |";
-      }
-      //fin negro
-      }
-   }
+for(int i = 0 ; i < size; i++){
+  for(int j = 0; j < size;j++){
+      matrix[i][j]="| |";
+		
+  }
 }
-void verificar(int size, string** matrix, int x, int y){
+for(int i=0;i<size;i++){
+  for(int j=0; j<size;j++){
+    if(i==0&&j%2==1||i==2&&j%2==1){
+      matrix[i][j]="|b|";
+ }
+    if(i==1&&j%2==0){
+      matrix[i][j] = "|b|";
+ }  
+    if(i==6&&j%2==1){
+      matrix[i][j]="|n|";
+ }
+    if(i==5&&j%2==0||i==7&&j%2==0){
+      matrix[i][j] = "|n|";
+ }
 
-}
-void validaciones(int size, string** matrix, int x, int y, int tipo){
+  }
+ }
+} 
+
+
+
+void validaciones(int size, string** matrix, int x, int y, int posicionX,int posicionY,int tipo,int cont1,int cont2){
    size=8;
+   string pos;
+   pos = matrix[x][y];
+      
    for(int i = 0; i < size; i++){
-      for(int j = 0; j < size; j++){   
-	 
-
+      for(int j = 0; j < size; j++){
+	 matrix[x][y]="| |";   
+	 if(tipo==1){
+	    if(matrix[posicionX][posicionY]=="|n|")
+	       cont1++;
+	    if((posicionX==x+1&&posicionY==y-1)||(posicionX==x+1&&posicionY==y+1)){
+	       if(posicionX==7){
+		  matrix[posicionX][posicionY]="|B|";
+	       }else{
+	       matrix[posicionX][posicionY]="|b|";
+	       }
+	     }else{
+	       matrix[x][y]="|b|";
+	    }
+	 }else{
+	    if(matrix[posicionX][posicionY]=="|b|")
+               cont2++;
+	  
+	    if(posicionX==x-1&&posicionY==y-1||posicionX==x-1&&posicionY==y+1){
+	       if(posicionX==0){
+		  matrix[posicionX][posicionY]="|N|";
+	       }else{
+	          matrix[posicionX][posicionY]="|n|";
+	       }
+	 	 
+      }else{
+	 matrix[x][y]="|n|";
       }
-   }
+    }
+  }
+}
 }
 
 void boardPic(){
@@ -158,5 +205,6 @@ void cleanScreen(){
 		}
 	}
 }
-      
+
+
 

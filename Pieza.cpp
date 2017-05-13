@@ -8,12 +8,12 @@ Pieza::Pieza(int pX,int pY, int pjugador)
 }
 
 	
-int getJugador()
+int Pieza::getJugador()
 {
 	return jugador; 
 }
 
-void setJugador(int tjugador)
+void Pieza::setJugador(int tjugador)
 {
 	jugador=tjugador;
 }
